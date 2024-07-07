@@ -10,7 +10,7 @@ const UserTypings = ({
   words: string;
   className?: string;
 }) => {
-  const typedCharacters = userInput.split("");
+  const typedCharacters = userInput.split(""); // get list of characters
 
   return (
     <div className={className}>
@@ -26,6 +26,7 @@ const UserTypings = ({
   );
 };
 
+// showing the character typed 1 by 1
 const Character = ({
   actual,
   expected,

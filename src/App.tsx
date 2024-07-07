@@ -1,22 +1,30 @@
-import { faker } from "@faker-js/faker";
+import React from "react";
+import GeneratedWords from "./components/GeneratedWords";
 import RestartButton from "./components/RestartButton";
 import Results from "./components/Results";
+import UserTypings from "./components/UserTypings";
 import useEngine from "./hooks/useEngine";
 import { calculateAccuracyPercentage } from "./utils/helpers";
 
-const words = faker.random.words(10);
-
 const App = () => {
-  const { words, typed, timeLeft, errors, state, restart, totalTyped } = useEngine();
+  const { words, typed, timeLeft, errors, state, restart, totalTyped } =
+    useEngine();
 
   return (
     <>
-      <CountdownTimer timeleft={30} />
-      <GeneratedWords words={words} />;
-
+      <CountdownTimer timeLeft={timeLeft} />
+      <WordsContainer>
+        <GeneratedWords key={words} words={words} />
+        {/* User typed characters will be overlayed over the generated words */}
+        <UserTypings
+          className="absolute inset-0"
+          words={words}
+          userInput={typed}
+        />
+      </WordsContainer>
       <RestartButton
         className={"mx-auto mt-10 text-slate-500"}
-        onRestart={() => null}
+        onRestart={restart}
       />
       <Results
         className="mt-10"
@@ -26,15 +34,19 @@ const App = () => {
         total={totalTyped}
       />
     </>
-  )
-}
+  );
+};
 
-const GeneratedWords = ({ words }: {words: string}) => {
-  return <div className="text-4xl text-center text-slate-500"> {words} </div>
-}
+const WordsContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="relative text-3xl max-w-xl leading-relaxed break-all mt-3">
+      {children}
+    </div>
+  );
+};
 
-const CountdownTimer = ({ timeleft } : { timeleft: number }) => {
-  return <h2 className=" text-primary-400 font<medium">Time: {timeleft}</h2>
-}
+const CountdownTimer = ({ timeLeft }: { timeLeft: number }) => {
+  return <h2 className="text-center text-2xl text-primary-400 font-medium">Time: {timeLeft}</h2>;
+};
 
 export default App;
