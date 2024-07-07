@@ -5,6 +5,7 @@ import Results from "./components/Results";
 import UserTypings from "./components/UserTypings";
 import useEngine from "./hooks/useEngine";
 import { calculateAccuracyPercentage } from "./utils/helpers";
+import Logo from "./components/Logo";
 
 const App = () => {
   const { words, typed, timeLeft, errors, state, restart, totalTyped } =
@@ -12,6 +13,7 @@ const App = () => {
 
   return (
     <>
+      {/* <Logo></Logo> */}
       <CountdownTimer timeLeft={timeLeft} />
       <WordsContainer>
         <GeneratedWords key={words} words={words} />

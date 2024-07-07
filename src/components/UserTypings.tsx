@@ -41,7 +41,7 @@ const Character = ({
     <span
       className={cn({
         "text-red-500": !isCorrect && !isWhiteSpace,
-        "text-primary-400": isCorrect && !isWhiteSpace,
+        "text-cyan-400": isCorrect && !isWhiteSpace, // typed character color
         "bg-red-500/50": !isCorrect && isWhiteSpace,
       })}
     >
