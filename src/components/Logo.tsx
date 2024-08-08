@@ -4,7 +4,7 @@ import React from "react";
 const Logo = () => {
 
   return (
-    <div className=" pb-200">
+    <div className=" ">
       <h1>
         Overtype
       </h1>

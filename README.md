@@ -1,5 +1,4 @@
-# Calculator React App
-
+# Overtype
 ![overtype.png](./assets/typing-app-preview.png)
 
 ## Available Scripts
